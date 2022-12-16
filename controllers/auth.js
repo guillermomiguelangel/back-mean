@@ -96,6 +96,8 @@ const loginUsuario = async(req, res = response) => {
 const renovarToken = async(req, res = response) => {
 
     const {uid,name} = req;
+
+    console.log(uid, name);
     
     //generar el JWT
     const token = await generarJWT(uid, name);
