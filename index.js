@@ -26,7 +26,7 @@ app.use( '/api/auth', require('./routes/auth'));
 
 //manejar otras rutas
 app.use( '*', (req,res)=>{
-  res.sendFile(path.resolve(__dirname, 'public/index.html'))
+  res.sendFile(path.resolve(__dirname, './public/index.html'))
 });
 
 app.listen( port , () => {
