@@ -4,7 +4,12 @@ const dbConnection = async ()=>{
 
     try {
         mongoose.set('strictQuery', false);
-        await mongoose.connect(process.env.DB_CONNECTION);
+        await mongoose.connect(process.env.DB_CONNECTION, { 
+            maxIdleTimeMS: 80000,
+            serverSelectionTimeoutMS: 80000,
+            socketTimeoutMS: 0,
+            connectTimeoutMS: 0
+        })
 
         console.log('Base de datos inicializada');
 

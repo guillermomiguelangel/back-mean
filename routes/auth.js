@@ -7,8 +7,13 @@ const { validarJWT } = require('../middlewares/validar-jwt');
 const router = Router();
 
 router.post('/new', [
-    check('email', 'El email es obligatorio').isEmail(),
-    check('name', 'El nombre es obligatorio').notEmpty(),
+    check('name', 'Ingresá tu nombre').notEmpty(),
+    check('lastname', 'Ingresá tu apellido').notEmpty(),
+    check('email', 'Ingresá un email válido').isEmail().normalizeEmail(),
+    check('phone', 'Ingresá tu número de teléfono').isMobilePhone(['es-AR']),
+    check('whatsapp', 'Ingresá tu número de whatsapp').isMobilePhone(['es-AR']),
+    check('service', 'Ingresá que servicios deseas prestar').notEmpty(),
+    check('payment', 'Ingresá que métodos de pago aceptas para realizar el cobro por tus servicios').notEmpty(),
     check('password', 'La contraseña debe ser igual o mayor a 6 caracteres').isLength({min:6}),
     validarCampos
 ]

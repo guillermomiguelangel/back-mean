@@ -7,6 +7,8 @@ const crearUsuario = async (req, res = response) => {
 
     const { name, email, password } = req.body;
 
+    console.log(req.body);
+
     try {
         const usuario = await Usuario.findOne({ email });
 
